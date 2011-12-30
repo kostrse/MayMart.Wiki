@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMart.Wiki.Tests", "MayMart.Wiki.Tests\MayMart.Wiki.Tests.csproj", "{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{97EA0F89-D3EB-46C9-B514-B5DB60A5CC94}"
+	ProjectSection(SolutionItems) = preProject
+		BuildPackage.proj = BuildPackage.proj
+		Local.testsettings = Local.testsettings
+		MayMart.Wiki.nuspec = MayMart.Wiki.nuspec
+		MayMart.Wiki.vsmdi = MayMart.Wiki.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMart.Wiki", "MayMart.Wiki\MayMart.Wiki.csproj", "{43813614-EA0F-4E7A-AADB-405152B79239}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = MayMart.Wiki.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{22BEA7B0-F053-4C70-BC2E-713BEAE180FB}.Release|x86.ActiveCfg = Release|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{43813614-EA0F-4E7A-AADB-405152B79239}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
