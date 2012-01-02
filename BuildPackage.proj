@@ -13,7 +13,6 @@
     <SnkFile Condition="$(SnkFile) == ''">$(SNK_FILE)</SnkFile>
     <ZipPackageName>MayMart.Wiki.$(ApplicationVersion).zip</ZipPackageName>
     <NuSpecFile>MayMart.Wiki.nuspec</NuSpecFile>
-    <NuGetApiKey Condition="$(NuGetApiKey) == ''">$(NUGET_API_KEY)</NuGetApiKey>
   </PropertyGroup>
   
   <PropertyGroup>
@@ -25,14 +24,9 @@
   <UsingTask AssemblyFile="$(MSBuildCommunityTasksLib)" TaskName="MSBuild.Community.Tasks.FileUpdate" />
   <UsingTask AssemblyFile="$(MSBuildCommunityTasksLib)" TaskName="MSBuild.Community.Tasks.Zip" />
   <UsingTask AssemblyFile="$(NuGetMSBuildLib)" TaskName="NuGet.MSBuild.NuGet" />
-  <UsingTask AssemblyFile="$(NuGetMSBuildLib)" TaskName="NuGet.MSBuild.NuGetPush" />
 
   <Target Name="Build">
-    <CallTarget Targets="CreateZipPackage" />
-  </Target>
-
-  <Target Name="BuildAndPublish">
-    <CallTarget Targets="CreateZipPackage;PublishNuGetPackage" />
+    <CallTarget Targets="CreateZipPackage;CreateNuGetPackage" />
   </Target>
   
   <Target Name="UpdateAssemblyVersion">
@@ -61,13 +55,7 @@
   </Target>
 
   <Target Name="CreateNuGetPackage" DependsOnTargets="UpdateNuSpecVersion">
-    <NuGet SpecFile="$(NuSpecFile)">
-      <Output TaskParameter="OutputPackage" PropertyName="NuGetPackageFile" />
-    </NuGet>
-  </Target>
-  
-  <Target Name="PublishNuGetPackage" DependsOnTargets="CreateNuGetPackage">
-    <NuGetPush ApiKey="$(NuGetApiKey)" PackagePath="$(NuGetPackageFile)" />
+    <NuGet SpecFile="$(NuSpecFile)" />
   </Target>
 
 </Project>

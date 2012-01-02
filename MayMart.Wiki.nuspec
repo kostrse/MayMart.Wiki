@@ -3,9 +3,11 @@
   <metadata>
     <id>MayMart.Wiki</id>
     <version>0.0.0.0</version>
+    <title>MayMart.Wiki Library</title>
     <authors>MAY-MART</authors>
+    <description>Regex-based Wiki library.</description>
+    <projectUrl>https://bitbucket.org/maymart/maymart.wiki</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>MayMart.Wiki</description>
   </metadata>
   <files>
     <file src="MayMart.Wiki\bin\Release\MayMart.Wiki.dll" target="lib\net40" />
