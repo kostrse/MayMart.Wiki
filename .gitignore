@@ -5,3 +5,5 @@ obj/
 *.suo
 _ReSharper.*
 TestResults/
+*.dbproj.schemaview
+*.dbmdl
