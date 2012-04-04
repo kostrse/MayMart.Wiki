@@ -6,7 +6,7 @@
     <title>MayMart.Wiki Library</title>
     <authors>MAY-MART</authors>
     <description>Regex-based Wiki library.</description>
-    <projectUrl>https://bitbucket.org/maymart/maymart.wiki</projectUrl>
+    <projectUrl>https://github.com/may-mart/MayMart.Wiki</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
   </metadata>
   <files>

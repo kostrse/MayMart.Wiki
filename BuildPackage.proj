@@ -1,59 +1,30 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
 
-  <ItemGroup>
-    <ProjectToBuild Include="MayMart.Wiki.sln" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AssemblyInfoFiles Include="**\AssemblyInfo.cs" />
-  </ItemGroup>
-
   <PropertyGroup>
     <ApplicationVersion Condition="$(ApplicationVersion) == ''">$(BUILD_NUMBER)</ApplicationVersion>
-    <LibProjectFile>MayMart.Wiki\MayMart.Wiki.csproj</LibProjectFile>
-    <ZipPackageName>MayMart.Wiki.$(ApplicationVersion).zip</ZipPackageName>
-    <NuSpecFile>MayMart.Wiki.nuspec</NuSpecFile>
+    <SnkFile Condition="$(SnkFile) == ''"></SnkFile>
   </PropertyGroup>
   
   <PropertyGroup>
-    <MSBuildCommunityTasksPath Condition="'$(MSBuildCommunityTasksPath)' == ''">$(MSBuildExtensionsPath)\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
-    <MSBuildCommunityTasksLib>$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.dll</MSBuildCommunityTasksLib>
-    <NuGetMSBuildLib>$(MSBuildExtensionsPath)\NuGet.MSBuild.dll</NuGetMSBuildLib>
     <MayMartTasksLib>$(MSBuildExtensionsPath)\MayMart.MsBuildTasks.dll</MayMartTasksLib>
   </PropertyGroup>
 
-  <UsingTask AssemblyFile="$(MSBuildCommunityTasksLib)" TaskName="MSBuild.Community.Tasks.Zip" />
-  <UsingTask AssemblyFile="$(NuGetMSBuildLib)" TaskName="NuGet.MSBuild.NuGet" />
-  <UsingTask AssemblyFile="$(MayMartTasksLib)" TaskName="MayMart.MsBuildTasks.SetStrongName" />
   <UsingTask AssemblyFile="$(MayMartTasksLib)" TaskName="MayMart.MsBuildTasks.SetVersion" />
+  <UsingTask AssemblyFile="$(MayMartTasksLib)" TaskName="MayMart.MsBuildTasks.SetStrongName" />
 
   <Target Name="Build">
-    <CallTarget Targets="CreateZipPackage;CreateNuGetPackage" />
-  </Target>
-  
-  <Target Name="BuildApplication">
     <Error Condition="$(ApplicationVersion) == ''" Text="Application version is not set via 'ApplicationVersion' MSBuild property." />
 
-    <SetVersion Files="@(AssemblyInfoFiles)" Version="$(ApplicationVersion)" />
-    <SetStrongName ProjectFiles="$(LibProjectFile)" SnkFile="$(SnkFile)" Condition="$(SnkFile) != ''" />
-
-    <MSBuild Projects="@(ProjectToBuild)" Targets="Clean;Build" Properties="Configuration=Release" />
-  </Target>
-
-  <Target Name="CreateZipPackage" DependsOnTargets="BuildApplication">
     <ItemGroup>
-      <FilesToZip Include="MayMart.Wiki\bin\Release\*.*" />
+      <SetVersionFiles Include="**\AssemblyInfo.cs" />
     </ItemGroup>
 
-    <Zip Files="@(FilesToZip)" WorkingDirectory="MayMart.Wiki\bin\Release" ZipFileName="$(ZipPackageName)" />
-  </Target>
-  
-  <Target Name="CreateNuGetPackage">
-    <Error Condition="$(ApplicationVersion) == ''" Text="Application version is not set via 'ApplicationVersion' MSBuild property." />
+    <SetVersion Files="@(SetVersionFiles)" Version="$(ApplicationVersion)" />
 
-    <SetVersion Files="$(NuSpecFile)" Version="$(ApplicationVersion)" />
+    <SetStrongName ProjectFiles="MayMart.Wiki\MayMart.Wiki.csproj" SnkFile="$(SnkFile)" Condition="$(SnkFile) != ''" />
+    <SetStrongName ProjectFiles="MayMart.Wiki.Tests\MayMart.Wiki.Tests.csproj" SnkFile="$(SnkFile)" Condition="$(SnkFile) != ''" />
 
-    <NuGet SpecFile="$(NuSpecFile)" />
+    <MSBuild Projects="MayMart.Wiki.sln" Targets="Clean;Build" Properties="Configuration=Release" />
   </Target>
 
 </Project>
